@@ -129,13 +129,17 @@
       <!-- EXAMS -->
       <div id="exams" class="section">
         <h2>Exams</h2>
-        <p>Exam schedule will appear here.</p>
+        <p>Exam schedule</p>
+       <ol>
+        <li>Science:22 feb</li>
+        <li>Maths:26 feb</li>
+       </ol>
       </div>
 
       <!-- RESULTS -->
       <div id="results" class="section">
         <h2>Results</h2>
-        <p>Results data will appear here.</p>
+        <p>Result will be announced soon</p>
       </div>
 
     </div>
