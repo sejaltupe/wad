@@ -1,0 +1,97 @@
+index.html:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration</title>
+</head>
+<body style="background-color: blanchedalmond; text-align:center; color:blue;">
+
+<h2>User Registration</h2>
+
+<form id="regForm">
+  Name: <input type="text" id="name" required><br><br>
+  Email: <input type="email" id="email" required><br><br>
+  Password: <input type="password" id="password" required><br><br>
+  <button type="submit" style="background:black; color:orange;">Register</button>
+</form>
+
+<script>
+document.getElementById("regForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  // get values
+  let user = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value
+  };
+
+  // get old users or empty array
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // add new user
+  users.push(user);
+
+  // save back to localStorage
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // redirect to list page
+  window.location.href = "list.html";
+});
+</script>
+
+</body>
+</html>
+
+
+//List.html:
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registered Users</title>
+  <style>
+     body{
+      background:blanchedalmond;
+      color: blue;
+    }
+    table{
+      text-align: center;
+     margin: auto;
+    }
+    h2{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<h2>All Registered Users</h2>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Password</th>
+  </tr>
+  <tbody id="userTable"></tbody>
+</table>
+
+<script>
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let tableBody = document.getElementById("userTable");
+
+  users.forEach(user => {
+    let row = `
+      <tr>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.password}</td>
+      </tr>
+    `;
+    tableBody.innerHTML += row;
+  });
+</script>
+
+</body>
+</html>
