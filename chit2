@@ -1,0 +1,53 @@
+//index.js:
+const express=require('express');
+const dbConnect=require('./mongodb')
+const app=express();
+app.use(express.json());
+
+//get
+app.get('/',async(req,res)=>{
+    let result=await dbConnect();
+    result=await result.find().toArray();
+    res.send(result);
+})
+
+//post
+app.post('/',async(req,res)=>{
+    let result=await dbConnect();
+    result=await result.insertOne(req.body);
+    res.send("added");
+})
+//put
+app.put('/',async(req,res)=>{
+    let result=await dbConnect();
+    result=await result.updateOne({name: req.body.name},{$set:{name:req.body.newval}});
+    res.send("updated");
+})
+//delete
+app.delete('/',async(req,res)=>{
+    let result=await dbConnect();
+    result=await result.deleteOne(req.body);
+    res.send("deleted");
+})
+app.listen(3000,()=>{
+    console.log(`it is running on port 3000`);
+})
+
+//mongodb.js:
+const {MongoClient}=require('mongodb');
+const url="mongodb://localhost:27017";
+const database='student';
+const client=new  MongoClient(url);
+
+const dbConnect=async()=>{
+    const result=await client.connect();
+    const db=await result.db(database);
+    return db.collection('profile');
+
+}
+
+module.exports=dbConnect;
+
+//npm init
+//npm i express
+//npm i mongodb
