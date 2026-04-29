@@ -1,0 +1,21 @@
+EC2:
+sudo apt update 
+sudo apt install nodejs npm -y
+mkdir app
+cd app
+nano server.js
+inside:
+const express=require('express')
+const app=express()
+app.use(express.static('public'))
+app.listen(4000,'0.0.0.0',()=>{
+console.log("runs at 4000 port")
+})
+ctrl x+y enter
+
+npm init -y
+npm install express
+mkdir public
+cd public
+nano index.html
+node server.js
