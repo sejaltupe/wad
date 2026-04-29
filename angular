@@ -1,0 +1,36 @@
+app.html:
+<h1>{{title}}</h1>
+
+<input type="text" #name placeholder="enter name"><br>
+<input type="text" #address placeholder="enter address"><br>
+<input type="email" #email placeholder="enter email"><br>
+<input type="text" #contact placeholder="enter contact"><br>
+<input type="password" #password placeholder="enter password"><br>
+
+<button (click)="getvalues(name.value,address.value,email.value,contact.value,password.value)">
+  register
+</button>
+
+<h2>REGISTERED DATA</h2>
+
+<p>NAME: {{displayname}}</p>
+<p>ADDRESS: {{displayaddress}}</p>
+<p>EMAIL: {{displayemail}}</p>
+<p>CONTACT: {{displaycontact}}</p>
+
+app.ts:
+title = 'registration';
+
+  displayname = '';
+  displayaddress = '';
+  displayemail = '';
+  displaycontact = '';
+  displaypassword = '';
+
+  getvalues(name: string, address: string, email: string, contact: string, password: string) {
+    this.displayname = name;
+    this.displayaddress = address;
+    this.displayemail = email;
+    this.displaycontact = contact;
+    this.displaypassword = password;
+}
