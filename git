@@ -1,0 +1,32 @@
+2A)GITHUB:
+//first code in vs code then:used to set git settings
+git config --global user.name "sejaltupe"
+git config --global user.email "sejalt_t23016@students.isquareit.edu.in"
+//create a repo in your git account
+//come to terminal of vs code
+git init //initialise a new git repo created a .git folder
+git add . //adds files . means all files
+git commit -m "initial commit" //commit saves the code -m:message describing the changes
+//connect to git repo
+git remote add origin https://github.com/sejaltupe/WAD
+//push code to GitHub
+git branch -M main //sets main branch
+git push -u origin main //push:uploads code to git -u:makes future push easier
+//final check at your git loc: https://github.com/sejaltupe/WAD
+
+
+
+
+
+
+git config --global user.name "sejaltupe"
+git config --global user.email "sejalt_t23016@students.isquareit.edu.in"
+
+git init
+git add .
+git commit -m "Initial commit"
+
+git remote add origin
+
+git branch -M main
+git push -u origin main
